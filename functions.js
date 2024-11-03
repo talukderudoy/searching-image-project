@@ -2,15 +2,16 @@
 
 
 
-    let inputData= "";
-    let page=1;
-    const acess="5Fn1BsE-bUrTPwVG3YEkWPP6EpcvRDfLbBKlcpRSchY"
-    const formEl=document.querySelector("form");
-    const inputEl=document.getElementById("search-image");
-    const searchRes=document.querySelector(".search-results");
-    const loadMore = document.getElementById("load-more");
+let inputData= "";
+let page=1;
+const acess="5Fn1BsE-bUrTPwVG3YEkWPP6EpcvRDfLbBKlcpRSchY"
+const formEl=document.querySelector("form");
+const inputEl=document.getElementById("search-image");
+const searchRes=document.querySelector(".search-results");
+const loadMore = document.getElementById("load-more");
 
 async function searchImages() {
+
   console.log(inputEl.value);
   inputData = inputEl.value;
   const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${acess}`;
@@ -18,13 +19,13 @@ async function searchImages() {
   const response = await fetch(url);
   const data = await response.json();
   const results = data.results;
+ console.log(results)
   if (page === 1) {
     searchRes.innerHTML = "";
   }
 
   results.forEach((result) => {
-    const imageWrapper = document.createElement("div");
-    imageWrapper.classList.add("search-result");
+    
 
     const image = document.createElement("img");
     image.src = result.urls.small;
@@ -35,6 +36,9 @@ async function searchImages() {
     imageLink.target = "_blank";
     imageLink.textContent = result.alt_description;
 
+    const imageWrapper = document.createElement("div");
+    imageWrapper.classList.add("search-result");
+    
     imageWrapper.appendChild(image);
     imageWrapper.appendChild(imageLink);
     searchRes.appendChild(imageWrapper);
