@@ -41,7 +41,7 @@ form {
 
 #search-image {
   width: 60%;
-  max-width: 400px;
+  max-width: 200px;
   padding: 10px 20px;
   border: none;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
@@ -63,8 +63,10 @@ form {
 }
 
 .search-results {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  /* justify-content: space-between;  */
+   grid-template-columns: repeat(3,1fr); 
+  gap: 10px;
   flex-wrap: wrap;
   max-width: 1200px;
   width: 90%;
@@ -72,7 +74,7 @@ form {
 }
 .search-result {
   margin-bottom: 60px;
-  width: 30%;
+  /* width: 30%; */
   height: 100%;
   border-radius: 10px;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
